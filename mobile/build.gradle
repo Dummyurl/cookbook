@@ -1,0 +1,166 @@
+// Main build script for Cookbook
+// 
+// Usage: gradlew assembleDebug           Build debug APK
+//        gradlew assembleRelease         Build production APK
+//        gradle wrapper                  Create Gradle Wrapper
+
+
+final VERSION_MAJOR = 1 // max two digits
+final VERSION_MINOR = 2 // max two digits
+final VERSION_PATCH = 1 // max two digits
+final VERSION_BUILD = 0 // max three digits
+
+
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'com.neenbedankt.android-apt'
+repositories {
+	mavenCentral()
+}
+
+dependencies
+{
+	compile 'com.android.support:support-v4:25.0.1'
+	compile 'com.android.support:appcompat-v7:25.0.1'
+	compile 'com.android.support:cardview-v7:25.0.1'
+	compile 'com.android.support:recyclerview-v7:25.0.1'
+	compile 'com.android.support:design:25.0.1'
+	compile 'com.google.android.gms:play-services-base:10.0.1'
+	compile 'com.google.android.gms:play-services-analytics:10.0.1'
+	compile 'com.google.android.gms:play-services-ads:10.0.1'
+	compile 'com.google.android.gms:play-services-auth:10.0.1'
+	compile 'com.google.android.gms:play-services:10.0.1'
+	compile 'com.bignerdranch.android:recyclerview-multiselect:0.1'
+	compile 'com.j256.ormlite:ormlite-android:4.48'
+	compile 'com.melnykov:floatingactionbutton:1.2.0'
+	compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+	compile 'se.emilsjolander:StickyScrollViewItems:1.1.0'
+	compile 'com.android.support:multidex:1.0.1'
+	compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+	compile 'com.squareup.retrofit2:retrofit:2.0.2'
+	compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+	compile 'com.fasterxml.jackson.core:jackson-annotations:2.3.0'
+	compile 'com.jakewharton:butterknife:8.0.1'
+	compile 'com.mikhaellopez:circularfillableloaders:1.2.0'
+	apt 'com.jakewharton:butterknife-compiler:8.0.1'
+	compile fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+
+android
+{
+	compileSdkVersion 23
+	buildToolsVersion "23.0.2"
+
+	defaultConfig
+	{
+		multiDexEnabled true
+		minSdkVersion 15
+		targetSdkVersion 22
+		versionCode VERSION_MAJOR*10000000 + VERSION_MINOR*100000 + VERSION_PATCH*1000 + VERSION_BUILD
+		versionName "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}"
+	}
+
+	signingConfigs
+	{
+		release
+		{
+			// passwords and alias are obtained via askForPasswords task
+			storeFile file("../${project.property('keystore.file')}")
+			storePassword ""
+			keyAlias ""
+			keyPassword ""
+		}
+	}
+
+	buildTypes
+	{
+		debug
+		{
+			buildConfigField "boolean", "LOGS", "true"
+
+			versionNameSuffix "-debug"
+		}
+
+		release
+		{
+			buildConfigField "boolean", "LOGS", "false"
+
+			signingConfig signingConfigs.release
+			zipAlignEnabled true
+			minifyEnabled false
+			shrinkResources false
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+		}
+	}
+
+	applicationVariants.all
+	{
+		variant ->
+			if(variant.buildType.name.equals("release"))
+			{
+				variant.outputs.each
+				{
+					output ->
+						def outputFile = output.outputFile
+						def date = new Date()
+						if(outputFile!=null && outputFile.name.endsWith('.apk'))
+						{
+							def fileName = outputFile.name.replace(
+									"mobile",
+									"cookbook-" + defaultConfig.versionName + "-" + defaultConfig.versionCode + "-" + date.format('yyyyMMdd'))
+							output.outputFile = new File((String) outputFile.parent, (String) fileName)
+						}
+				}
+			}
+	}
+	compileOptions {
+		targetCompatibility 1.8
+		sourceCompatibility 1.8
+	}
+
+	dexOptions {
+		javaMaxHeapSize "4g"
+	}
+}
+
+
+task askForPasswords <<
+{
+	def storePass
+	def keyAlias
+	def keyPass
+
+	def keystorePropertiesFile = new File((String) project.property("keystore.properties"))
+
+	if(project.hasProperty("keystore.properties") && keystorePropertiesFile.exists())
+	{
+		println "Loading keystore passwords from property file..."
+		Properties properties = new Properties()
+		properties.load(new FileInputStream(keystorePropertiesFile))
+		storePass = properties['keystore.store.password']
+		keyAlias = properties['keystore.key.alias']
+		keyPass = properties['keystore.key.password']
+	}
+	else
+	{
+		println "Getting keystore passwords from user input..."
+		storePass = new String(System.console().readPassword("\nStore password: "))
+		keyAlias = new String(System.console().readLine("Key alias: "))
+		keyPass = new String(System.console().readPassword("Key password: "))
+	}
+
+	android.signingConfigs.release.storePassword = storePass
+	android.signingConfigs.release.keyAlias = keyAlias
+	android.signingConfigs.release.keyPassword = keyPass
+}
+
+
+tasks.whenTaskAdded
+{
+	theTask ->
+	if(theTask.name.equals("packageRelease"))
+	{
+		theTask.dependsOn "askForPasswords"
+	}
+}

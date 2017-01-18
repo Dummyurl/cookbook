@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	app:cardBackgroundColor="@color/global_bg_front"
+	app:cardCornerRadius="@dimen/card_corner_radius"
+	app:cardElevation="@dimen/global_elevation_xxs">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="@dimen/global_spacing_xs"
+			android:textAppearance="@style/TextAppearance.Cookbook.Headline"
+			android:fontFamily="sans-serif-light"
+			android:text="@string/fragment_recipe_detail_intro_title" />
+
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="?attr/dividerHorizontal" />
+
+		<TextView
+			android:id="@+id/fragment_recipe_detail_intro_text"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="@dimen/global_spacing_xs"
+			android:textAppearance="@style/TextAppearance.Cookbook.Body1"
+			android:textColor="@color/global_text_secondary" />
+
+		<View
+			android:id="@+id/fragment_recipe_detail_intro_divider"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="?attr/dividerHorizontal" />
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="@dimen/global_spacing_xs"
+			android:gravity="center"
+			android:orientation="horizontal">
+
+			<TextView
+				android:id="@+id/fragment_recipe_detail_intro_time"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:drawableTop="@drawable/ic_card_time"
+				android:textAppearance="@style/TextAppearance.Cookbook.Subhead"
+				android:background="@drawable/selector_clickable_item_bg" />
+
+			<TextView
+				android:id="@+id/fragment_recipe_detail_intro_servings"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:drawableTop="@drawable/ic_card_servings"
+				android:textAppearance="@style/TextAppearance.Cookbook.Subhead"
+				android:background="@drawable/selector_clickable_item_bg" />
+
+			<TextView
+				android:id="@+id/fragment_recipe_detail_intro_calories"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:drawableTop="@drawable/ic_card_calories"
+				android:textAppearance="@style/TextAppearance.Cookbook.Subhead"
+				android:background="@drawable/selector_clickable_item_bg" />
+
+		</LinearLayout>
+	</LinearLayout>
+</android.support.v7.widget.CardView>

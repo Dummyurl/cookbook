@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "752264426575",
+    "project_id": "cookbook7272"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:752264426575:android:317736d0a77abba5",
+        "android_client_info": {
+          "package_name": "com.robotemplates.cookbook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "752264426575-v5n5rhtqk5cvdvhss4scb6n4vbtfg6n4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.robotemplates.cookbook",
+            "certificate_hash": "417975A2BF4F0B1172FD0A46E8EE302F27A8B781"
+          }
+        },
+        {
+          "client_id": "752264426575-op76oeiuooqqfi9p40i7b0k3poeo6as4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0UHZ67QMVgKy1PPb0hSZXzjUGb0Q2Yp0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

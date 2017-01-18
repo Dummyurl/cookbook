@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.robotemplates.cookbook.view.SelectorRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_recipe_list_item"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/fragment_recipe_list_recycler_item_size"
+    android:listSelector="@drawable/selector_clickable_item_bg_inverse"
+    android:minHeight="@dimen/fragment_recipe_list_recycler_item_size">
+
+    <ImageView
+        android:id="@+id/fragment_recipe_list_item_image"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fragment_recipe_list_recycler_item_size"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/fragment_recipe_list_item_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fragment_recipe_list_recycler_item_panel_height"
+        android:layout_alignParentBottom="true"
+        android:background="@color/fragment_recipe_list_recycler_item_panel_bg"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif"
+        android:gravity="center_vertical"
+        android:maxLines="3"
+        android:paddingLeft="@dimen/global_spacing_xs"
+        android:paddingRight="@dimen/global_spacing_xxs"
+        android:textAppearance="@style/TextAppearance.Cookbook.Body1.Inverse" />
+
+</com.robotemplates.cookbook.view.SelectorRelativeLayout>

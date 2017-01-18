@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- LANGUAGE INDEPENDENT -->
+	<string name="app_name">Cookbook</string>
+	<string name="app_store_uri">https://play.google.com/store/apps/details?id=%1$s</string>
+
+	<!-- LANGUAGE DEPENDENT -->
+	<string name="global_database_fail_toast">Wooops! Cannot read data from database</string>
+
+	<string name="title_recipe_detail">Recipe detail</string>
+	<string name="social_login">Cookbook Login</string>
+	<string name="title_search">Search</string>
+
+	<string name="menu_fragment_recipe_detail_share">Share</string>
+	<string name="menu_fragment_recipe_detail_shopping_list">Send shopping list</string>
+	<string name="menu_fragment_recipe_detail_link">Open web link</string>
+	<string name="menu_rate">Rate</string>
+	<string name="menu_about">About</string>
+	<string name="menu_search">Search</string>
+	<string name="menu_search_hint">Search recipes</string>
+
+	<string name="drawer_title">Cookbook</string>
+	<string name="drawer_category_all">All recipes</string>
+	<string name="drawer_category_favorites">Favorites</string>
+	<string name="drawer_open">Open navigation drawer</string>
+	<string name="drawer_close">Close navigation drawer</string>
+
+	<string name="placeholder_empty">No recipes found</string>
+	<string name="placeholder_offline">No Internet connection available</string>
+
+	<string name="permission_write_external_storage">Permission to download and read images is required</string>
+
+	<string name="fragment_recipe_detail_intro_title">Intro</string>
+	<string name="fragment_recipe_detail_intro_time">%1$d min</string>
+	<string name="fragment_recipe_detail_intro_servings">{0,choice,1#{0} serving|1&lt;{0} servings}</string>
+	<string name="fragment_recipe_detail_intro_calories">%1$d kcal</string>
+	<string name="fragment_recipe_detail_intro_joules">%1$d kJ</string>
+	<string name="fragment_recipe_detail_intro_energy">Each 100g serving contains</string>
+	<string name="fragment_recipe_detail_ingredients_title">Ingredients</string>
+	<string name="fragment_recipe_detail_ingredients_title_recalculated">Ingredients (%1$d servings)</string>
+	<string name="fragment_recipe_detail_ingredients_clear">Clear</string>
+	<string name="fragment_recipe_detail_ingredients_recalculate">Recalculate</string>
+	<string name="fragment_recipe_detail_instruction_title">Instruction</string>
+	<string name="fragment_recipe_detail_share_subject">Recipe</string>
+	<string name="fragment_recipe_detail_shopping_list_subject">Shopping list</string>
+
+	<string name="dialog_about_title">About</string>
+	<string name="dialog_about_message"><![CDATA["People who love to eat are always the best people."<br />(Julia Child)<br /><br />Cookbook app made with love by <a href="http://robotemplates.com">Robo Templates</a>.]]></string>
+
+	<string name="dialog_servings_title">Servings</string>
+
+	<string name="facebook_app_id">637775889739258</string>
+	<string name="fb_login_protocol_scheme">fb637775889739258</string>
+	<string name="loading">Loading…</string>
+
+	<!-- TODO(user): replace with your real server client ID -->
+	<!-- Server Client ID.  This should be a valid Web OAuth 2.0 Client ID obtained
+         from https://console.developers.google.com/ -->
+	<string name="server_client_id">752264426575-v5n5rhtqk5cvdvhss4scb6n4vbtfg6n4.apps.googleusercontent.com</string>
+	<string name="logout">Logout</string>
+	<string name="dialog_logout_title">Logout</string>
+	<string name="dialog_logout_message">Are you sure, you want to logout?</string>
+	<string name="internet_error">Failed to connect to Internet</string>
+	<string name="logout_succesfull">Logout Successful</string>
+	<string name="menu_sort">Sort</string>
+	<string name="sort_by_favourites">Sort by favourites</string>
+	<string name="sort_by_viewers">Sort by viewers</string>
+	<string name="continue_with">Continue with...</string>
+	<string name="never_post">we\'ll never post anything without \n your permission</string>
+
+</resources>

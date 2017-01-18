@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:background="@android:color/white"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.robotemplates.cookbook.view.SelectorRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/fragment_recipe_list_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:listSelector="@drawable/selector_clickable_item_bg_inverse"
+            android:minHeight="@dimen/fragment_recipe_list_recycler_item_size">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="30dp">
+
+                <ImageView
+                    android:id="@+id/img_logo"
+                    android:layout_width="150dp"
+                    android:layout_height="130dp"
+                    android:layout_centerInParent="true"
+                    android:layout_above="@+id/tv_continue_with"
+                    android:background="@drawable/login_logo" />
+
+                <TextView
+                    android:id="@+id/tv_continue_with"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="80dp"
+                    android:layout_above="@+id/fbLoginButton"
+                    android:gravity="center"
+                    android:text="@string/continue_with"
+                    android:textColor="#7e7e7f"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/fbLoginButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_above="@+id/googleLoginButton"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#3b5998"
+                    android:text="Facebook"
+                    android:textAllCaps="false"
+                    android:textColor="#fff"
+                    android:textSize="20sp"
+                    android:textStyle="normal" />
+
+                <Button
+                    android:id="@+id/googleLoginButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_above="@+id/tv_permission"
+                    android:layout_gravity="center_horizontal"
+                    android:background="#f24e46"
+                    android:text="Google"
+                    android:textAllCaps="false"
+                    android:textColor="#fff"
+                    android:textSize="20sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/tv_permission"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:layout_alignParentBottom="true"
+                    android:text="@string/never_post"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    android:textStyle="normal" />
+            </RelativeLayout>
+
+
+        </com.robotemplates.cookbook.view.SelectorRelativeLayout>
+
+
+    </FrameLayout>
+
+</android.support.design.widget.CoordinatorLayout>

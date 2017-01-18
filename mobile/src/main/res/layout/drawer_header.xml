@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_header"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/drawer_banner_height"
+    android:background="@drawable/banner"
+    android:gravity="center_vertical"
+    android:minHeight="@dimen/drawer_banner_height"
+    android:orientation="horizontal"
+    android:padding="@dimen/global_keyline_s">
+
+    <com.robotemplates.cookbook.view.CircularImageView
+        android:id="@+id/img_user_image"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/placeholder_photo" />
+
+    <TextView
+        android:id="@+id/tv_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:text="@string/drawer_title"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"
+        android:textStyle="normal" />
+
+</LinearLayout>

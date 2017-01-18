@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.robotemplates.cookbook"
+    android:installLocation="auto">
+
+    <!-- versionCode, versionName, minSdkVersion, targetSdkVersion properties are set via Gradle script -->
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+
+
+    <!-- This permissions are neccessary for broadcast receiver -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+
+    <!--
+    You can easily change the main theme. Just modify application.android:theme attribute.
+    There are 8 main themes you can use:
+        Theme.Cookbook.Blue
+        Theme.Cookbook.Brown
+        Theme.Cookbook.Carrot
+        Theme.Cookbook.Gray
+        Theme.Cookbook.Green
+        Theme.Cookbook.Indigo
+        Theme.Cookbook.Red
+        Theme.Cookbook.Yellow
+    Don't forget to modify also MainActivity's theme.
+    -->
+
+    <application
+        android:name=".CookbookApplication"
+        android:allowBackup="true"
+        android:hardwareAccelerated="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Cookbook.Carrot"
+        tools:replace="android:icon">
+
+        <activity
+            android:name=".activity.SplashActivity"
+            android:launchMode="standard">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name=".activity.SocialLoginActivity"
+            android:launchMode="standard"></activity>
+
+        <!--
+        Themes for MainActivity:
+            Theme.Cookbook.TransparentStatusBar.Blue
+            Theme.Cookbook.TransparentStatusBar.Brown
+            Theme.Cookbook.TransparentStatusBar.Carrot
+            Theme.Cookbook.TransparentStatusBar.Gray
+            Theme.Cookbook.TransparentStatusBar.Green
+            Theme.Cookbook.TransparentStatusBar.Indigo
+            Theme.Cookbook.TransparentStatusBar.Red
+            Theme.Cookbook.TransparentStatusBar.Yellow
+        -->
+
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="@string/app_name"
+            android:launchMode="standard"
+            android:theme="@style/Theme.Cookbook.TransparentStatusBar.Carrot">
+
+        </activity>
+
+        <activity
+            android:name=".activity.RecipeDetailActivity"
+            android:label="@string/title_recipe_detail"
+            android:launchMode="standard" />
+
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|uiMode|smallestScreenSize"
+            tools:replace="android:configChanges" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:launchMode="standard" />
+
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name=".content.RecipeSearchRecentSuggestionsProvider"
+            android:authorities="com.robotemplates.cookbook.content.RecipeSearchRecentSuggestionsProvider"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.gms.analytics.globalConfigResource"
+            android:resource="@xml/analytics_global_tracker" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider637775889739258"
+            android:exported="true" />
+
+        <!-- Broadcast receiver declaration in manifest file and make sure to enable it -->
+        <receiver
+            android:name="com.robotemplates.cookbook.receivers.InternetConnector_Receiver"
+            android:enabled="true">
+            <intent-filter>
+
+                <!-- Intent filters for broadcast receiver -->
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+                <action android:name="android.net.wifi.STATE_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <service android:name=".service.DownloadService" />
+        <service android:name=".service.SendDataService" />
+    </application>
+</manifest>
