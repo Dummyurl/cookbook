@@ -38,19 +38,15 @@ public class RecipeSortByCategoryViewerQuery extends Query {
         Data<List<RecipeModel>> data = new Data<>();
         List<RecipeModel> listSort;
         if (mCategoryId == -1L){
-            Log.e("1_view","1");
             listSort = RecipeDAO.readAll(mSkip, mTake);
 
         }else if(mCategoryId == -2L){
-            Log.e("2_view","2");
             listSort = RecipeDAO.readFavorites(mSkip, mTake);
 
         }else if(mCategoryId == -3L){
-            Log.e("3_view","3");
             listSort = RecipeDAO.search(mQuery, mSkip, mTake);
 
         }else{
-            Log.e("4_view","4");
             listSort = RecipeDAO.readByCategory(mCategoryId, mSkip, mTake);
         }
         Collections.sort(listSort, RecipeModel.ASCENDING_COMPARATOR_VIEW);

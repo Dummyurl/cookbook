@@ -111,7 +111,6 @@ public class DownloadService extends IntentService implements Constant, Callback
         if (code == RESPONSE_CODE) {
             if (cookbookDataPOJO.getSuccess() == SUCCESS) {
 
-                Log.i(TAG, "CookbookData_TRUE??" + cookbookDataPOJO.getSuccess());
                 setUpDataBase(cookbookDataPOJO.getCategories(),
                         cookbookDataPOJO.getRecipes(),
                         cookbookDataPOJO.getIngredients());
@@ -181,7 +180,6 @@ public class DownloadService extends IntentService implements Constant, Callback
                     }
 
                 } else {
-                    Log.i("else1", "else1??");
                     if (categories != null && categories.size() > 0) {
                         for (int i = 0; i < categories.size(); i++) {
 
@@ -216,7 +214,6 @@ public class DownloadService extends IntentService implements Constant, Callback
                     }
 
                 } else {
-                    Log.i("else2", "else2??");
                     if (recipes != null && recipes.size() > 0) {
 
                         for (int i = 0; i < recipes.size(); i++) {
@@ -252,7 +249,6 @@ public class DownloadService extends IntentService implements Constant, Callback
                         }
                     }
                 } else {
-                    Log.i("else3", "else3??");
                     if (ingredients != null && ingredients.size() > 0) {
 
                         for (int i = 0; i < ingredients.size(); i++) {
@@ -445,13 +441,10 @@ public class DownloadService extends IntentService implements Constant, Callback
     private void sendIntent(Download download) {
         Intent intent;
         if (download.getActivityName().equals("SplashActivity")) {
-            Log.i("Pass To:-", "SplashActivity");
             intent = new Intent(SplashActivity.MESSAGE_PROGRESS_SPLASH);
         } else if (download.getActivityName().equals("MainActivity")) {
-            Log.i("Pass To:-", "MainActivity");
             intent = new Intent(MainActivity.MESSAGE_PROGRESS_MAIN);
         } else {
-            Log.i("Pass To:-", "SocialLoginActivity");
             intent = new Intent(MainActivity.MESSAGE_PROGRESS_LOGIN);
         }
         intent.putExtra("download", download);

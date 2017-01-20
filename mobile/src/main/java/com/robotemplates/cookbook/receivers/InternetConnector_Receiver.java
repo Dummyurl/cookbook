@@ -24,8 +24,6 @@ public class InternetConnector_Receiver extends BroadcastReceiver {
             // is
             // visible
             // or not
-            Log.i("Activity is Visible ", "Is activity visible : " + isVisible);
-
             // If it is visible then trigger the task else do nothing
             if (isVisible == true) {
                 ConnectivityManager connectivityManager = (ConnectivityManager) context
@@ -38,12 +36,10 @@ public class InternetConnector_Receiver extends BroadcastReceiver {
                 if (networkInfo != null && networkInfo.isConnected()) {
 
                     new MainActivity().changeTextStatus(context, true);
-                    //new SplashActivity().changeTextStatus(context, true);
 
                 } else {
 
                     new MainActivity().changeTextStatus(context, false);
-                    //new SplashActivity().changeTextStatus(context, false);
 
                 }
             }

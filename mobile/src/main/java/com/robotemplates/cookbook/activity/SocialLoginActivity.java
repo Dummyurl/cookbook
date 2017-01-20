@@ -80,7 +80,6 @@ public class SocialLoginActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         checkLogInPreferences(this);
-        //Log.e("Key", "Hash??" + printHashKey(this));
         setContentView(R.layout.activity_social_login);
         mActivity = SocialLoginActivity.this;
         // init analytics tracker
@@ -156,7 +155,6 @@ public class SocialLoginActivity extends AppCompatActivity implements
                     @Override
                     public void onError(FacebookException exception) {
                         // App code
-                        Log.e("FacebookException", "onError??" + exception.getMessage());
                         hideProgressDialog();
                     }
                 });
@@ -292,11 +290,6 @@ public class SocialLoginActivity extends AppCompatActivity implements
         if (result.isSuccess()) {
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
-            //Log.e("Name", "" + acct.getDisplayName());
-            //Log.e("id", "" + acct.getId());
-            //Log.e("email", "" + acct.getEmail());
-            //Log.e("photo", "" + acct.getPhotoUrl().toString());
-
             String photoUrl = "";
             if(acct.getPhotoUrl() != null){
                 photoUrl = acct.getPhotoUrl().toString();
@@ -347,7 +340,6 @@ public class SocialLoginActivity extends AppCompatActivity implements
         // An unresolvable error has occurred and Google APIs (including Sign-In) will not
         // be available.
         hideProgressDialog();
-        Log.d(TAG, "onConnectionFailed:" + connectionResult);
     }
 
     private void showProgressDialog() {

@@ -92,14 +92,10 @@ public class SendDataService extends Service implements Constant {
                     if (resultsView.size() > 0) {
 
                         for (RecipeModel recipeModel : resultsView) {
-                            Log.i("recipe_view", "id?" + recipeModel.getId());
                             listViewID.add(String.valueOf(recipeModel.getId()));
                         }
 
                         recipeViewIDStr = buildCommaSeparatedString(listViewID);
-                        Log.i("Viewers", "Str??" + recipeViewIDStr);
-                    } else {
-                        Log.i("Viewers", "Str2??" + recipeViewIDStr);
                     }
 
 
@@ -108,22 +104,17 @@ public class SendDataService extends Service implements Constant {
                     if (results.size() > 0) {
 
                         for (RecipeModel recipeModel : results) {
-                            Log.i("recipe_fav", "id?" + recipeModel.getId());
                             listRecipeID.add(String.valueOf(recipeModel.getId()));
                         }
 
                         recipeIDStr = buildCommaSeparatedString(listRecipeID);
-                        Log.i("favourite", "Str??" + recipeIDStr);
                         setFavouriteWithId(recipeIDStr, gson);
 
                     } else {
-                        Log.i("favourite", "Str2??" + recipeIDStr);
                         setFavouriteWithId(recipeIDStr, gson);
                     }
 
                 } else {
-                    Log.i("JSON", "BlankStringFav??" + recipeIDStr);
-                    Log.i("JSON", "BlankStringViewer??" + recipeViewIDStr);
                     setFavouriteWithId(recipeIDStr, gson);
                 }
             }
@@ -151,7 +142,6 @@ public class SendDataService extends Service implements Constant {
                 .build();
 
         RestClient restClientAPI = retrofit.create(RestClient.class);
-        Log.i("UserID", "UserID??" + Preference.getLoginId(this));
         String userId = "";
         if (Preference.getLoginId(this) != null && !Preference.getLoginId(this).equals("")) {
             userId = Preference.getLoginId(this);
@@ -168,11 +158,9 @@ public class SendDataService extends Service implements Constant {
                 if (code == RESPONSE_CODE) {
                     if (favouritePOJO.getSuccess() == SUCCESS) {
 
-                        Log.i(TAG, "Favourite_TRUE??" + favouritePOJO.getSuccess());
                         setViewersWithId(recipeViewIDStr, gson);
 
                     } else {
-                        Log.i(TAG, "Favourite_FALSE??" + favouritePOJO.getSuccess());
                         setViewersWithId(recipeViewIDStr, gson);
                     }
 
@@ -213,11 +201,9 @@ public class SendDataService extends Service implements Constant {
                 if (code == RESPONSE_CODE) {
                     if (viewerPOJO.getSuccess() == SUCCESS) {
 
-                        Log.i(TAG, "Viewer_TRUE??" + viewerPOJO.getSuccess());
                         stopSelf();
 
                     } else {
-                        Log.i(TAG, "Viewer_FALSE??" + viewerPOJO.getSuccess());
                         stopSelf();
                     }
 

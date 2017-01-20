@@ -95,8 +95,6 @@ public class RecipeListFragment extends TaskFragment implements DatabaseCallList
     public static final long CATEGORY_ID_FAVORITES_SORT = -4L;
     public static final long CATEGORY_ID_VIEWERS_SORT = -5L;
 
-    public static final String CATEGORY_TAG_SORT = "Sort";
-
     private static final String ARGUMENT_CATEGORY_ID = "category_id";
     private static final String ARGUMENT_SEARCH_QUERY = "search_query";
     private static final String ARGUMENT_SORT_QUERY = "sort_query";

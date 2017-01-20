@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
@@ -70,7 +69,6 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         if (!databaseExists()) {
             synchronized (this) {
                 boolean success = copyPrepopulatedDatabase();
-                Log.e("copyDatabase","success??"+success);
             }
         }
     }
@@ -82,7 +80,6 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db, ConnectionSource connectionSource) {
         try {
-            Logcat.e("onCreate");
 
             TableUtils.createTable(connectionSource, CategoryModel.class);
             TableUtils.createTable(connectionSource, RecipeModel.class);
@@ -102,7 +99,6 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, ConnectionSource connectionSource, int oldVersion, int newVersion) {
         try {
 
-            Logcat.e("onUpgrade");
             TableUtils.dropTable(connectionSource, CategoryModel.class, true);
             TableUtils.dropTable(connectionSource, RecipeModel.class, true);
             TableUtils.dropTable(connectionSource, IngredientModel.class, true);
@@ -129,7 +125,6 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     public synchronized void clearDatabase() {
         try {
-            Logcat.e("clearDatabase");
 
             TableUtils.dropTable(getConnectionSource(), CategoryModel.class, true);
             TableUtils.dropTable(getConnectionSource(), RecipeModel.class, true);
