@@ -336,12 +336,10 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.Cat
     public void changeTextStatus(Context ctx, boolean isConnected) {
         // Change status according to boolean value
         if (isConnected) {
-            Log.i("Internet", "Internet Connected.");
             //Toast.makeText(ctx, "Internet Connected.", Toast.LENGTH_LONG).show();
             //getDataBaseFromServer();
 
         } else {
-            Log.i("Internet", "Internet Disconnected.");
             //Toast.makeText(ctx, "Internet Disconnected.", Toast.LENGTH_LONG).show();
             //Snackbar.make(findViewById(R.id.coordinatorLayout), ctx.getString(R.string.internet_error), Snackbar.LENGTH_LONG).show();
         }
@@ -357,7 +355,6 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.Cat
                         long numRows1 = RecipeDAO.getDao().countOf();
                         long numRows2 = IngredientDAO.getDao().countOf();
                         if (numRows == 0 && numRows1 == 0 && numRows2 == 0) {
-                            //Log.e("Row", "Zero");
                             registerReceiver();
                             if (checkPermission()) {
                                 startDownload();
@@ -365,7 +362,6 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.Cat
                                 requestPermission();
                             }
                         } else {
-                            //Log.e("Row", "Not Zero");
                         }
                     }
                 } catch (SQLException e) {

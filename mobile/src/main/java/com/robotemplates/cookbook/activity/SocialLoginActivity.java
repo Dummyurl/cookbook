@@ -123,7 +123,6 @@ public class SocialLoginActivity extends AppCompatActivity implements
 
                                     @Override
                                     public void onCompleted(JSONObject object, GraphResponse response) {
-                                        Log.i("LoginActivity", response.toString());
                                         // Get facebook data from login
                                         Bundle bFacebookData = getFacebookData(object);
 
@@ -290,7 +289,6 @@ public class SocialLoginActivity extends AppCompatActivity implements
 
     // [START handleSignInResult]
     private void handleSignInResult(GoogleSignInResult result) {
-        Log.d(TAG, "handleSignInResult:" + result.isSuccess());
         if (result.isSuccess()) {
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
@@ -374,7 +372,6 @@ public class SocialLoginActivity extends AppCompatActivity implements
 
             try {
                 URL profile_pic = new URL("https://graph.facebook.com/" + id + "/picture?width=200&height=150");
-                Log.i("profile_pic", profile_pic + "");
                 bundle.putString("profile_pic", profile_pic.toString());
 
             } catch (MalformedURLException e) {
